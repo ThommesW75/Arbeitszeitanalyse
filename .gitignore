@@ -1,0 +1,12 @@
+# Python Caches
+__pycache__/
+*.pyc
+
+# Environment-Dateien
+.env
+*.env
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+.terraform/
