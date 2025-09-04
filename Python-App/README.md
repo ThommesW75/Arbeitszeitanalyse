@@ -1,18 +1,24 @@
-Python Application: Working Time Analysis (Core Logic)
+Python Application: Working Time Analysis
 
-This directory contains the Python script that forms the core logic of the analysis tool.
-Features (Version 1.0)
+This directory contains the Python script for the core application logic.
 
-The script zeiterfassung_v1.py currently performs the following tasks:
+Current Version: 1.1
+Features
 
-    Data Source: Uses a hardcoded list of dictionaries within the script to simulate employee data.
+    Analyzes a hardcoded list of employee data (name and hours).
 
-    Analysis: It iterates through the list and checks if an employee has worked 10 or more hours, exactly 9 hours, or less than 8 hours.
+    Categorizes employees based on their working hours (overtime, undertime, etc.).
 
-    Reporting: Prints a formatted summary to the terminal, listing the names and counts of employees in each category.
+    Prints a summary report to the console.
+
+Changes in v1.1
+
+    Refactoring: Replaced hardcoded "magic numbers" (like 10, 9, 8) for business rules with configuration variables at the top of the script. This makes the code more readable and easier to maintain.
 
 How to Run
 
-To execute the script, navigate to the main project directory (Arbeitszeitanalyse) and run the following command in your terminal:
+    Navigate to the main project directory (Arbeitszeitanalyse).
 
-python3 Python-App/zeiterfassung_v1.py
+    Execute the script using the following command:
+
+    python3 Python-App/zeiterfassung_v1.1.py
