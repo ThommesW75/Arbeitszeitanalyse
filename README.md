@@ -11,6 +11,8 @@ The core logic of the analysis tool is implemented in Python. The current versio
 
     Print a summary report to the console.
 
+    Infrastructure (Terraform): In Progress - The infrastructure code for the application and database components has been structured.
+
 For more details on the Python application, see the Python-App README.
 Project Vision / Roadmap
 
@@ -20,10 +22,14 @@ This project will be developed iteratively. Future steps include:
 
     [ ] Phase 3: Containerizing the Python application and the database using Docker.
 
-    [ ] Phase 4: Defining the required infrastructure as code (IaC) using Terraform.
+    [x] Phase 4: Defining the required infrastructure as code (IaC) using Terraform.
 
     [ ] Phase 5: Managing the application and infrastructure with configuration management tools like Ansible.
 
 Technologies
 
     Python 3
+   
+    Terraform
+
+

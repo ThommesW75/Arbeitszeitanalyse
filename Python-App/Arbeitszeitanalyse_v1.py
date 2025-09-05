@@ -10,7 +10,7 @@ zeiterfassung = [
     {'name': 'Julia Wagner', 'stunden': 9},
     {'name': 'Holger Frank', 'stunden': 8},
     {'name': 'Lukas Müller', 'stunden': 10},
-    {'name': 'Jörg Bauer', 'stunden': 7},
+    {'name': 'Jörg Bauer', 'stunden': 7.5},
     {'name': 'Werner Vogel', 'stunden': 8},
     {'name': 'Michael Becker', 'stunden': 9},
     {'name': 'Monika Wolf', 'stunden': 8},
