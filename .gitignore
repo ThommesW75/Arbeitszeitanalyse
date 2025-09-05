@@ -10,3 +10,6 @@ __pycache__/
 *.tfstate
 *.tfstate.*
 .terraform/
+*.tfvars
+*.tfstate.backup
+crash.log
