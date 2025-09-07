@@ -1,15 +1,23 @@
-# Defines the Terraform and provider versions
-terraform {
-  # Ensures the configuration is compatible with the specified Terraform version.
-  # The operator '>= 1.0.0' allows any version from 1.0.0 and above.
-  required_version = ">= 1.0.0"
+#
+# This file defines the required Terraform version and the providers needed for this configuration.
+# It's a best practice to keep all version constraints in one place for clarity and consistency.
+#
 
+# Defines the minimum required version for Terraform.
+# This ensures that your code is compatible with a working version and prevents unexpected errors.
+terraform {
+  required_version = ">= 1.13.1"
+
+  # Defines the providers that Terraform must download and install.
+  # This block tells Terraform which services you will be interacting with.
   required_providers {
-    # The local provider to work with your laptop's filesystem.
-    # The version '~> 2.0' means: use any version from 2.0 up to, but not including, 3.0.
     local = {
       source  = "hashicorp/local"
-      version = "~> 2.0"
+      version = "~> 2.5"
+    }
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 2.16"
     }
   }
 }
