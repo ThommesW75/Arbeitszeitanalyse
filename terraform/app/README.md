@@ -8,11 +8,15 @@ Requirements
 
     Terraform: This module requires a working installation of the Terraform CLI.
 
+    Docker: This module requires a working installation of the Docker daemon.
+
     Local system: The code is configured to run on a Linux-based system, such as Ubuntu, with a mounted homelab partition.
 
 Files
 
     versions.tf: Specifies the required Terraform and provider versions.
+
+    providers.tf: Configures the providers needed to interact with the local filesystem and the Docker daemon.
 
     variables.tf: Defines the input variables for this module, such as the homelab path.
 

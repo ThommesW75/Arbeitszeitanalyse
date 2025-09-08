@@ -2,30 +2,39 @@ Python Application: Working Time Analysis
 
 This directory contains the Python script for the core application logic.
 
-Current Version: 1.2
+Current Version: 1.3
+
 Features
 
-    Analyzes a hardcoded list of employee data (name and hours).
+    Calculates worked hours dynamically based on start and end times.
 
-    Categorizes employees based on their working hours (overtime, undertime, etc.).
+    Analyzes data from a flexible, in-script data source designed to be easily replaced by a database.
+
+    Categorizes employees based on their working hours (overtime, undertime, 10h+ violations).
 
     Prints a summary report to the console.
 
-    The code is structured in a main function for clarity and future expansion.
+    Code is structured with separate functions for data loading and calculation for better maintainability.
 
-    
-    Changes in v1.2
+Changes in v1.3
+
+    Major Data Refactoring: The static data source ('stunden') has been replaced with a dynamic structure using 'start_time', 'end_time', and 'contract_hours'. The data list has been moved into a dedicated load_time_tracking_data() function to cleanly separate data from logic.
+
+    Dynamic Calculation: A new calculate_hours() function was introduced. The application no longer reads static hours but calculates them dynamically, making the system flexible and realistic.
+
+    Code Standardization: All function names and dictionary keys have been refactored to use a consistent English naming convention (e.g., calculate_hours, contract_hours), following professional development standards.
+
+Changes in v1.2
 
     Refactoring: The entire script logic was moved into a main() function and is now started by a standard if __name__ == "__main__": block. This improves the structure and prepares the code for future extensions and modularization.
 
-    Changes in v1.1
+Changes in v1.1
 
     Refactoring: Replaced hardcoded "magic numbers" (like 10, 9, 8) for business rules with configuration variables at the top of the script. This makes the code more readable and easier to maintain.
 
 How to Run
 
-    Navigate to the main project directory (Arbeitszeitanalyse).
+Navigate to the main project directory (Arbeitszeitanalyse). Execute the script using the following command:
+Bash
 
-    Execute the script using the following command:
-
-    python3 Python-App/zeiterfassung_v1.1.py
+python3 Python-App/Arbeitszeitanalyse.py
