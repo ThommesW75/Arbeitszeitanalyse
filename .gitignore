@@ -5,6 +5,7 @@ __pycache__/
 # Environment-Dateien
 .env
 *.env
+venv/
 
 # Terraform state files
 *.tfstate
