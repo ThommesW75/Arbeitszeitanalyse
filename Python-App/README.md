@@ -2,7 +2,7 @@ Python Application: Working Time Analysis
 
 This directory contains the Python script for the core application logic.
 
-Current Version: 1.3
+Current Version: 1.4
 
 Features
 
@@ -15,6 +15,14 @@ Features
     Prints a summary report to the console.
 
     Code is structured with separate functions for data loading and calculation for better maintainability.
+
+Changes in v1.4
+
+    Decoupled Analysis Logic: The core analysis logic was refactored. The previous if/elif/elif structure was replaced with two independent checks. This ensures that 10h+ violations are now also correctly registered as overtime.
+
+    Advanced Violation Reporting: Implemented a more sophisticated data collection for 10h+ violations using a dictionary. The final report now shows a detailed summary per employee, including the number of violations and the specific dates on which they occurred.
+
+    Improved User Output: Refined the wording in the report for better readability and user experience.
 
 Changes in v1.3
 
