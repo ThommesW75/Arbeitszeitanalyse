@@ -5,3 +5,4 @@
 terraform.tfstate*
 **/__pycache__
 **/*.pyc
+../Python-App/README.md
