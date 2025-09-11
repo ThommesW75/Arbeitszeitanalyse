@@ -29,6 +29,6 @@ resource "docker_container" "app_container" {
   # This ensures data is saved even if the container is removed.
   volumes {
     host_path      = var.app_directory_path
-    container_path = "/data"
+    container_path = "/app/logs"
   }
 }

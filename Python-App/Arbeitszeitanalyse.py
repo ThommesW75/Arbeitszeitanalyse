@@ -3,6 +3,43 @@
 # after setting the correct permissions (chmod +x).
 
 from datetime import datetime, timedelta # We need these tools for time calculations.
+import logging
+import os
+
+# --- GLOBAL CONSTANTS / CONFIGURATION ---
+MAX_WORK_HOURS = 10.0  # Maximum allowed working hours per day.
+LOG_FILE_PATH = "logs/Arbeitszeitanalyse.log" 
+
+def setup_logging():
+    """
+    Configures the logging system to write to a file.
+    """
+    # Get the root logger object
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO) # Set the lowest level of messages to log
+
+    # --- Create a file handler to write logs to a file ---
+    log_directory = os.path.dirname(LOG_FILE_PATH)
+    if not os.path.exists(log_directory):
+        os.makedirs(log_directory)
+
+    # Now, create the handler that writes to our file.
+    file_handler = logging.FileHandler(LOG_FILE_PATH)
+
+    # Define the format for the log messages.
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
+    # Tell the file handler to use this format.
+    file_handler.setFormatter(formatter)
+
+    # Finally, add the new handler to our logger.
+    logger.addHandler(file_handler)
+
+    # Also add a handler to log to the console (for docker logs)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(formatter) # We use the same format as for the file
+    logger.addHandler(stream_handler)
+
 
 # =================================================================
 # --- DATA SOURCE FUNCTION (Phase 1.1 - Complete & Refactored) ---
@@ -63,14 +100,17 @@ def main():
     Analyzes the employee time tracking data and prints a report.
     This version uses the original logic but with the new data structure.
     """
-   
-    # --- CONFIGURATION ---
-    # We still need the rule for the maximum work time.
-    MAX_WORK_HOURS = 10.0
+    # Call the setup function right at the very start!
+    setup_logging()
 
+    # Log entry for the program start
+    logging.info("Starting analysis...")
+    
     # --- DATA SOURCE ---
     # We load the data from our new function.
     all_data = load_time_tracking_data()
+    # Log entry after loading data
+    logging.info(f"Successfully loaded {len(all_data)} records.")
 
     # --- Step 2: Prepare containers for the analysis results ---
     ten_hour_violations = {}
@@ -135,6 +175,8 @@ def main():
     print(f"Namen: {undertime_employees}")
 
     print("\n--- Analyse abgeschlossen ---")
+    # The final technical message is now a log entry.
+    logging.info("Analysis finished.")
 
 # This is the standard way to start a Python program.
 # The code inside this if-block only runs when the script is executed directly.

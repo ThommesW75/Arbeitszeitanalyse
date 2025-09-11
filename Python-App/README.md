@@ -2,19 +2,29 @@ Python Application: Working Time Analysis
 
 This directory contains the Python script for the core application logic.
 
-Current Version: 1.4
+Current Version: 1.5
 
 Features
 
     Calculates worked hours dynamically based on start and end times.
 
-    Analyzes data from a flexible, in-script data source designed to be easily replaced by a database.
+    Analyzes data from a flexible, in-script data source.
 
-    Categorizes employees based on their working hours (overtime, undertime, 10h+ violations).
+    Categorizes employees for 10h+ violations and overtime/undertime.
 
-    Prints a summary report to the console.
+    Runs as a persistent, interactive service that can be re-triggered without restarting.
 
-    Code is structured with separate functions for data loading and calculation for better maintainability.
+    Logs technical events (start, finish, errors) to both the console and a persistent file for easy monitoring.
+
+    Prints a clean, user-facing summary report to the console, separate from technical logs.
+
+Changes in v1.5
+
+    Service-Oriented Architecture: The script has been refactored to run as a persistent service instead of a one-shot execution. A main while loop was added to keep the application alive and allow for interactive re-analysis, making it suitable for containerized operation.
+
+    Professional Logging: Implemented a robust logging system using Python's built-in logging module. Technical status messages are now logged with timestamps and levels to both the console (for docker logs) and a persistent file, separating them cleanly from the user-facing report.
+
+    Code Modularization: The core analysis logic was moved into a dedicated run_analysis() function to improve code structure and readability within the new main loop.
 
 Changes in v1.4
 
@@ -42,7 +52,30 @@ Changes in v1.1
 
 How to Run
 
-Navigate to the main project directory (Arbeitszeitanalyse). Execute the script using the following command:
+Locally
+
+Navigate to the main project directory and execute the script:
 Bash
 
 python3 Python-App/Arbeitszeitanalyse.py
+
+In Docker (Recommended Workflow)
+
+    Start the container:
+    Bash
+
+terraform apply
+
+Interact with the application:
+Bash
+
+docker attach arbeitszeitanalyse
+
+Once attached, press Enter to run an analysis or type q and then Enter to quit the application.
+
+View technical logs:
+Bash
+
+docker logs arbeitszeitanalyse
+
+The persistent log file (Arbeitszeitanalyse.log) will be available on the host machine in the directory specified in your Terraform variables.
