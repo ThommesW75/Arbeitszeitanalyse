@@ -9,4 +9,5 @@ COPY ./Python-App/ .
 
 # This command runs your application when the container starts.
 # It now uses a single, consistent file name.
-CMD ["python", "Arbeitszeitanalyse.py"]
+# This command just keeps the container running and waiting for exec commands.
+CMD ["tail", "-f", "/dev/null"]

@@ -24,6 +24,10 @@ resource "docker_container" "app_container" {
   name  = "arbeitszeitanalyse"
   image = docker_image.app_image.name
 
+  # This is a best-practice for services.
+  # It tells Docker to automatically restart the container if it crashes or after a server reboot.
+  restart = "unless-stopped"
+
   # This block is crucial for data persistence.
   # It connects the host path (local file) with the container path.
   # This ensures data is saved even if the container is removed.
