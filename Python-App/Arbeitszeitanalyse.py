@@ -33,11 +33,7 @@ def setup_logging():
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
 
-    # Create a handler to write to the console (for 'docker logs')
-    stream_handler = logging.StreamHandler()
-    stream_handler.setFormatter(formatter)
-    logger.addHandler(stream_handler)
-
+    
 # =================================================================
 # --- DATA SOURCE FUNCTION ---
 # =================================================================

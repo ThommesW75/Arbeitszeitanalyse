@@ -28,6 +28,9 @@ resource "docker_container" "app_container" {
   # It tells Docker to automatically restart the container if it crashes or after a server reboot.
   restart = "unless-stopped"
 
+  # Add this block to set the timezone inside the container
+  env = ["TZ=Europe/Berlin"]
+
   # This block is crucial for data persistence.
   # It connects the host path (local file) with the container path.
   # This ensures data is saved even if the container is removed.
