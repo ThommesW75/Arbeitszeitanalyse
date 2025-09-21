@@ -1,7 +1,45 @@
-Terraform Modules
+Terraform - App Infrastructure
 
-This directory contains the Terraform modules for the project's infrastructure. Each subdirectory represents a separate, independent module with its own state and lifecycle.
+This module defines the infrastructure for the main application. It is a self-contained unit of code that can be deployed independently of the other components.
+Infrastructure Overview
 
-    app/: Infrastructure for the main application.
+The configuration creates a directory on the local homelab partition to serve as a persistent volume for the application's logs and data.
+Requirements
 
-    database/: Infrastructure for the database.
+    Terraform: This module requires a working installation of the Terraform CLI.
+
+    Docker: This module requires a working installation of the Docker daemon.
+
+    Local system: The code is configured to run on a Linux-based system, such as Ubuntu, with a mounted homelab partition.
+
+Files
+
+    versions.tf: Specifies the required Terraform and provider versions.
+
+    providers.tf: Configures the providers needed to interact with the local filesystem and the Docker daemon.
+
+    variables.tf: Defines the input variables for this module, such as the homelab path.
+
+    main.tf: The core configuration file that declares the infrastructure resources.
+
+    outputs.tf: Defines the output values, such as the path to the created directory.
+
+    terraform.tfvars: A local file containing the specific values for the variables. It is excluded from version control.
+
+How to use
+
+    Navigate to the module directory:
+
+    cd terraform/app
+
+    Initialize the Terraform configuration:
+
+    terraform init
+
+    Review the execution plan:
+
+    terraform plan
+
+    Apply the changes to create the infrastructure:
+
+    terraform apply
